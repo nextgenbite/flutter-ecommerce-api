@@ -50,12 +50,6 @@ class ProductCard extends StatelessWidget {
                     width: double.infinity,
                     height: 120,
                   ),
-                  //  Image.network(
-                  //   Product.baseUrl + product.thumbnail,
-                  //   fit: BoxFit.cover,
-                  //   width: double.infinity,
-                  //   // height: 120,
-                  // ),
                 ),
                 if (product.stock < 1)
                   Positioned(

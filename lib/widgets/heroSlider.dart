@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce/models/slider.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -25,11 +26,29 @@ class Heroslider extends StatelessWidget {
                 image: DecorationImage(
                   image:
                       slider.thumbnail != null && slider.thumbnail.isNotEmpty
-                          ? NetworkImage(SliderModel.baseUrl + slider.thumbnail)
-                          : AssetImage('assets/images/placeholder.png'),
+                          ? CachedNetworkImageProvider(
+                            SliderModel.baseUrl + slider.thumbnail,
+                          )
+                          : const AssetImage('assets/images/placeholder.png')
+                              as ImageProvider,
                   fit: BoxFit.cover,
                 ),
               ),
+              child:
+                  slider.thumbnail != null && slider.thumbnail.isNotEmpty
+                      ? CachedNetworkImage(
+                        imageUrl: SliderModel.baseUrl + slider.thumbnail,
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                        height: 120,
+                        progressIndicatorBuilder:
+                            (context, url, progress) => Center(
+                              child: CircularProgressIndicator(
+                                value: progress.progress,
+                              ),
+                            ),
+                      )
+                      : null, // No need for a child if using a placeholder
             );
           }).toList(),
     );
