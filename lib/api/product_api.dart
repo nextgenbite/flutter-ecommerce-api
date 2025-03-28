@@ -1,12 +1,12 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+import '../constants/config.dart';
 import '../models/product.dart';
 
 class ProductApi {
   // static const String baseUrl = 'https://dummyjson.com/';
-  static const String baseUrl = 'https://ecomapi.nextgenbite.com/api/';
-
+  static const String baseUrl = " ${Config.apiUrl}api";
   // Future<List<Product>> fetchProducts() async {
   //   final response = await http.get(Uri.parse(baseUrl + 'new/products'));
   //   // print(json.decode(response.body));

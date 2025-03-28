@@ -40,8 +40,8 @@ class HomepageProvider extends ChangeNotifier {
           (data['latest'] as List)
               .map((item) => Product.fromJson(item))
               .toList();
+    // ignore: empty_catches
     } catch (e) {
-      print("Error fetching homepage data: $e");
     }
 
     _isLoading = false;

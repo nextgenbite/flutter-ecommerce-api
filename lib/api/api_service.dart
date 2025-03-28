@@ -1,9 +1,9 @@
 import 'dart:convert';
+import 'package:ecommerce/constants/config.dart';
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  static const String _baseUrl =
-      'https://ecomapi.nextgenbite.com/public/api/homepage';
+  static const String _baseUrl = '${Config.apiUrl}api/homepage';
 
   // static Future<HomepageModel> fetchHomepageData() async {
   //   final response = await http.get(Uri.parse(_baseUrl));

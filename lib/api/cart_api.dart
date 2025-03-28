@@ -2,11 +2,11 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../constants/config.dart';
 import '../models/cart.dart';
 
 class CartApi {
-  static const String baseUrl = 'http://ecomapi.nextgenbite.com/public/api';
-  // static const String baseUrl = 'http://ecomerce_lara_nuxt.test/api';
+  static const String baseUrl = "${Config.apiUrl}api";
 
   static Future<String> _getGuestId() async {
     final prefs = await SharedPreferences.getInstance();

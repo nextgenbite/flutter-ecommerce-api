@@ -48,7 +48,7 @@ class ProductCard extends StatelessWidget {
                     imageUrl: Product.baseUrl + product.thumbnail,
                     fit: BoxFit.cover,
                     width: double.infinity,
-                    height: 120,
+                    // height: 180.h,
                   ),
                 ),
                 if (product.stock < 1)
@@ -56,13 +56,16 @@ class ProductCard extends StatelessWidget {
                     top: 8,
                     right: 8,
                     child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 8.w,
+                        vertical: 4.h,
+                      ),
                       decoration: BoxDecoration(
                         color: Colors.red,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Text(
-                        'Sold Out ${product.stock}',
+                        'Sold Out',
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -76,7 +79,7 @@ class ProductCard extends StatelessWidget {
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -89,12 +92,26 @@ class ProductCard extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 2.h),
-                  Text(
-                    '\$${product.price}',
-                    style: TextStyle(
-                      fontSize: 12.sp,
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
+                  Row(
+                    children: [
+                      Text(
+                        '\$${product.discount == 0 ? product.price : product.discount}',
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                      ),
+                      if (product.discount != 0) SizedBox(width: 8.w),
+                      if (product.discount != 0)
+                        Text(
+                          '\$${product.price}',
+                          style: TextStyle(
+                            decoration: TextDecoration.lineThrough,
+                            fontSize: 12.sp,
+                            color: Colors.grey,
+                          ),
+                        ),
+                    ],
                   ),
                   SizedBox(height: 2.h),
                   SizedBox(
@@ -114,7 +131,7 @@ class ProductCard extends StatelessWidget {
                       ),
                       child: Text(
                         'BUY NOW',
-                        style: TextStyle(fontSize: 10, color: Colors.white),
+                        style: TextStyle(fontSize: 10.sp, color: Colors.white),
                       ),
                     ),
                   ),

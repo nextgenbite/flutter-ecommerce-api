@@ -6,16 +6,22 @@ class Register extends StatefulWidget {
   const Register({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _RegisterState createState() => _RegisterState();
 }
 
 class _RegisterState extends State<Register> {
   bool _isLoading = false;
   final _formKey = GlobalKey<FormState>();
+  // ignore: prefer_typing_uninitialized_variables
   var email;
+  // ignore: prefer_typing_uninitialized_variables
   var password;
+  // ignore: prefer_typing_uninitialized_variables
   var fname;
+  // ignore: prefer_typing_uninitialized_variables
   var lname;
+  // ignore: prefer_typing_uninitialized_variables
   var phone;
   @override
   Widget build(BuildContext context) {
@@ -263,13 +269,6 @@ class _RegisterState extends State<Register> {
     setState(() {
       _isLoading = true;
     });
-    var data = {
-      'email': email,
-      'password': password,
-      'phone': phone,
-      'fname': fname,
-      'lname': lname,
-    };
 
     // var res = await AuthService().authData(data, '/register');
     // var body = json.decode(res.body);

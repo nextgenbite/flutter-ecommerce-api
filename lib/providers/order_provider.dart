@@ -13,13 +13,11 @@ class OrderProvider with ChangeNotifier {
     try {
       final response = await OrderApi().submitOrder(orderData);
       if (response['success']) {
-        print('Order placed successfully!');
         response;
       } else {
-        print('Order failed: ${response['message']}');
       }
+    // ignore: empty_catches
     } catch (e) {
-      print('Error submitting order: $e');
     }
 
     _isLoading = false;

@@ -16,8 +16,8 @@ class ProductProvider with ChangeNotifier {
 
     try {
       _products = await ProductApi().fetchProducts();
+    // ignore: empty_catches
     } catch (e) {
-      print('Error fetching products: $e');
     }
 
     _isLoading = false;

@@ -29,6 +29,18 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       // title: Text(title, style: TextStyle(color: Colors.white),),
       actions: [
         if (isHome)
+          // Badge(
+          //   label: Text('11', style: TextStyle(color: Colors.white)),
+          //   child: IconButton(
+          //     icon: Icon(Icons.shopping_cart),
+          //     onPressed: () {
+          //       if (onCartTap != null) {
+          //         onCartTap!();
+          //       }
+          //     },
+          //     color: Colors.white,
+          //   ),
+          // ),
           IconButton(
             icon: Icon(Icons.shopping_cart),
             onPressed: onCartTap as void Function()?,

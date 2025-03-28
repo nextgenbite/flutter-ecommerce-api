@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
+import '../constants/config.dart';
+
 class OrderApi {
-  static const String baseUrl = 'http://ecomapi.nextgenbite.com/public/api';
-  // static const String baseUrl = 'http://ecomerce_lara_nuxt.test/api';
+  static const String baseUrl = " ${Config.apiUrl}api";
   static Future<Map?> store(Map order) async {
     final response = await http.post(Uri.parse('$baseUrl/order'), body: order);
     if (response.statusCode == 200) {

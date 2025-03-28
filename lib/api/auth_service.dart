@@ -2,8 +2,10 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../constants/config.dart';
+
 class AuthService {
-  final String baseUrl = 'http://ecomerce_lara_nuxt.test/api';
+  static const String baseUrl = " ${Config.apiUrl}api";
 
   Future<String?> login(String email, String password) async {
     final response = await http.post(

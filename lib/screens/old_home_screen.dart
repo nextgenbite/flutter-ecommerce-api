@@ -6,13 +6,13 @@ import '../providers/product_provider.dart';
 import '../widgets/app_bottom_bar.dart';
 import '../widgets/custom_app_bar.dart';
 import '../screens/cart_screen.dart';
-import '../screens/profile_screen.dart';
 import '../widgets/product_section.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _HomeScreenState createState() => _HomeScreenState();
 }
 
@@ -22,24 +22,17 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     Future.microtask(
       () =>
+          // ignore: use_build_context_synchronously
           Provider.of<ProductProvider>(context, listen: false).fetchProducts(),
     );
   }
 
-  int _currentIndex = 0;
-  final List<Widget> _pages = [HomeScreen(), CartScreen(), ProfileScreen()];
+  final int _currentIndex = 0;
 
-  void _onItemTapped(int index) {
-    if (_currentIndex != index) {
-      setState(() {
-        _currentIndex = index;
-      });
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
-    final productProvider = Provider.of<ProductProvider>(context);
+    Provider.of<ProductProvider>(context);
 
     return Scaffold(
       appBar: CustomAppBar(

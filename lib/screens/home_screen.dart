@@ -5,14 +5,16 @@ import '../providers/homepage_provider.dart';
 import '../widgets/app_bottom_bar.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/custom_app_bar.dart';
-import '../widgets/heroSlider.dart';
+import '../widgets/hero_slider.dart';
 import '../widgets/product_section.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _HomeScreenState createState() => _HomeScreenState();
 }
 
@@ -23,6 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Future.microtask(
       () =>
           Provider.of<HomepageProvider>(
+            // ignore: use_build_context_synchronously
             context,
             listen: false,
           ).fetchHomepageData(),
@@ -57,10 +60,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     children: [
                       // Hero Slider
-                      Heroslider(sliders: sliders),
-                      SizedBox(height: 20.h),
+                      HeroSlider(sliders: sliders),
+                      SizedBox(height: 10.h),
                       SizedBox(
                         height: 120.h,
+                        width: double.infinity,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: categories.length,
@@ -71,6 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: GestureDetector(
                                 onTap:
                                     () => {
+                                      // ignore: avoid_print
                                       print(
                                         "Selected Category: ${category.title}",
                                       ),
@@ -81,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       radius: 30.r,
                                       backgroundImage:
                                           category.thumbnail.isNotEmpty
-                                              ? NetworkImage(
+                                              ? CachedNetworkImageProvider(
                                                 Config.apiUrl +
                                                     category.thumbnail,
                                               )
@@ -89,10 +94,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 'assets/images/placeholder.jpg',
                                               ),
                                     ),
-                                    SizedBox(height: 10.h),
+                                    SizedBox(height: 8.h),
                                     Text(
                                       category.title,
-                                      style: TextStyle(fontSize: 12.sp),
+                                      style: TextStyle(fontSize: 10.sp),
                                     ),
                                   ],
                                 ),
@@ -102,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
 
-                      SizedBox(height: 20.h),
+                      SizedBox(height: 10.h),
 
                       // Trending Products
                       ProductSection(
@@ -110,7 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         title: 'New Products',
                       ),
 
-                      SizedBox(height: 20.h),
+                      SizedBox(height: 10.h),
 
                       // Latest Products
                       ProductSection(

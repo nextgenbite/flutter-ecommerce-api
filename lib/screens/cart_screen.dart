@@ -9,6 +9,7 @@ class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _CartScreenState createState() => _CartScreenState();
 }
 
@@ -17,6 +18,7 @@ class _CartScreenState extends State<CartScreen> {
   void initState() {
     super.initState();
     Future.microtask(
+      // ignore: use_build_context_synchronously
       () => Provider.of<CartProvider>(context, listen: false).fetchCart(),
     );
   }
@@ -96,6 +98,7 @@ class _CartScreenState extends State<CartScreen> {
                                       color: Colors.white,
                                       boxShadow: [
                                         BoxShadow(
+                                          // ignore: deprecated_member_use
                                           color: Colors.grey.withOpacity(0.4),
                                           spreadRadius: 0.5,
                                           blurRadius: 1,

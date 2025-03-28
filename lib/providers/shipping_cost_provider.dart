@@ -16,7 +16,7 @@ class ShippingCostProvider with ChangeNotifier {
     try {
       _shippingCost = await ShippingCostApi().fetchShippingCost();
     } catch (e) {
-      print('Error fetching products: $e');
+      debugPrint("Error fetching shipping cost: $e");
     }
 
     _isLoading = false;
